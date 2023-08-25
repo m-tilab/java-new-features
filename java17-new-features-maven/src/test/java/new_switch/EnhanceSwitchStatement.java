@@ -6,8 +6,8 @@ public class EnhanceSwitchStatement {
 
     @Test
     public void SwitchExample() {
-        String player = "Lewandowski";
-        //String player = "Messi";
+        //String player = "Lewandowski";
+        String player = "Messi";
 
         runSwitch(player);
     }
@@ -15,9 +15,9 @@ public class EnhanceSwitchStatement {
     private void runSwitch(String player) {
 
         switch (player) {
-            case "Lewandowski", "Muller", "Neuer" -> System.out.println("Bayern");
-            case "Messi" -> System.out.println("PSG");
-            case "Ronaldo" -> System.out.println("Manchester United");
+            case "Muller", "Neuer" -> System.out.println("Bayern");
+            case "Messi" -> System.out.println("Miami");
+            case "Ronaldo" -> System.out.println("Al Nasr");
             default -> System.out.println("i dont know this player.");
         }
     }

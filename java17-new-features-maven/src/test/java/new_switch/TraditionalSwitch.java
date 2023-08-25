@@ -17,16 +17,15 @@ public class TraditionalSwitch {
 
         switch (player) {
 
-            case "Lewandowski":
             case "Muller":
             case "Neuer":
                 System.out.println("Bayern");
                 break;
             case "Messi":
-                System.out.println("PSG");
+                System.out.println("Miami");
                 break;
             case "Ronaldo":
-                System.out.println("Manchester United");
+                System.out.println("Al Nassr");
                 break;
             default:
                 System.out.println("i dont know this player.");

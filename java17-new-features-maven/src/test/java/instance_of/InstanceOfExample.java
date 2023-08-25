@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class InstanceOfExample {
 
     @Test
-    public void instanceOfExample() {
+    void instanceOfExample() {
 
         AbstractFile abstractFile = new MusicFile();
         useInstanceOf(abstractFile);
