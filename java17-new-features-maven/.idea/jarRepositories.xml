@@ -2,6 +2,16 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="nexus" />
+      <option name="name" value="remote-nexus" />
+      <option name="url" value="http://10.128.8.20:8081/artifactory/remote-nexus" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="projectlombok.org" />
+      <option name="name" value="projectlombok.org" />
+      <option name="url" value="https://projectlombok.org/edge-releases" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
@@ -12,9 +22,19 @@
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="libs-release" />
+      <option name="url" value="http://10.128.8.20:8081/artifactory/libs-release" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="libs-snapshot" />
+      <option name="url" value="http://10.128.8.20:8081/artifactory/libs-snapshot" />
     </remote-repository>
   </component>
 </project>
