@@ -1,0 +1,7 @@
+Some notes for compile:
+
+C:\DevTools\jdk\jdk-21\bin\javac.exe -Xlint:preview --enable-preview -source 21  UnnamedPatternsAndVariables.java
+C:\DevTools\jdk\jdk-21\bin\java.exe --enable-preview --source 21 UnnamedPatternsAndVariables.java
+
+C:\DevTools\jdk\jdk-21\bin\javac.exe -Xlint:preview --enable-preview -source 21  UnnamedClassesAndInstanceMainMethods.java
+C:\DevTools\jdk\jdk-21\bin\java.exe --enable-preview --source 21 UnnamedClassesAndInstanceMainMethods.java
