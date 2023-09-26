@@ -38,7 +38,8 @@ public class CreateVirtualThread {
 
         runnable3.run();
 
-        // ExecuteService: java 1.8 - Execute multiple threads in a single task queue
+        // ExecuteService Interface: java 1.8 - Execute multiple threads in a single task queue
+        long start = System.currentTimeMillis();
         try (ExecutorService singleTaskQueueExecutor = Executors.newFixedThreadPool(3)) {
             List<String> finalResultList = new ArrayList<>();
             for (int i = 0; i < 10; i++) {
@@ -48,13 +49,15 @@ public class CreateVirtualThread {
                 finalResultList.add(i + " " + finalResult.get()); // blocking //5
             }
             singleTaskQueueExecutor.shutdown();
+            System.out.println("Total time using ExecutorService and future: " + (System.currentTimeMillis() - start));
         }
 
         // CompletableFuture: java 1.8 - Execute multiple threads in a multiple task queue
+        start = System.currentTimeMillis();
         ExecutorService executor = Executors.newFixedThreadPool(3);
         List<CompletableFuture<Integer>> finalResultList = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++)  {
+        for (int i = 0; i < 10; i++) {
             CompletableFuture<Integer> voidCompletableFuture = CompletableFuture
                     .supplyAsync(() -> add(10, 20), executor)
                     .thenApplyAsync(CreateVirtualThread::multiply, executor);
@@ -66,7 +69,31 @@ public class CreateVirtualThread {
             future.get();
         }
         executor.shutdown();
+        System.out.println("Total time using ExecutorService and CompletableFuture: " + (System.currentTimeMillis() - start));
 
+        // Java 21 ----------------------------------------------------------------
+
+        /**
+         *
+         * Definition:
+         *      Virtual threads are lightweight threads that dramatically reduce the effort of writing,
+         *      maintaining, and observing high-throughput concurrent applications.
+         *
+         *  Note: Virtual Thread using Platform thread resources
+         *
+         *  Advantages of Java virtual threads *
+         1. Improves application availability
+
+         2. Improves application throughput
+
+         3. Reduces ‘OutOfMemoryError: unable to create new native thread’
+
+         4. Reduces application memory consumption
+
+         5. Improves code quality
+
+         6. 100% compatible with Platform Threads
+         */
 
         // Platform Thread
         var platformThread = Thread.ofPlatform().unstarted(() -> System.out.println(Thread.currentThread()));
@@ -94,25 +121,10 @@ public class CreateVirtualThread {
             virtualThreadPerTaskExecutor.submit(runnable);
             virtualThreadPerTaskExecutor.submit(runnable);
         }
-
-
-        /**
-         *  Advantages of Java virtual threads *
-        1. Improves application availability
-
-        2. Improves application throughput
-
-        3. Reduces ‘OutOfMemoryError: unable to create new native thread’
-
-        4. Reduces application memory consumption
-
-        5. Improves code quality
-
-        6. 100% compatible with Platform Threads
-        */
     }
 
     static class Add implements Callable<Integer> {
+
         int a;
         int b;
 
@@ -125,11 +137,15 @@ public class CreateVirtualThread {
         public Integer call() throws Exception {
             return a + b;
         }
+
     }
 
     static class Multiply implements Callable<Integer> {
+
         int result;
-        Multiply(int result) {
+
+        Multiply(int result) throws InterruptedException {
+            Thread.sleep(100);
             this.result = result;
         }
 
@@ -139,6 +155,7 @@ public class CreateVirtualThread {
             System.out.println(Thread.currentThread().getName() + " " + result);
             return result;
         }
+
     }
 
     public static Integer add(int a, int b) {
@@ -146,8 +163,16 @@ public class CreateVirtualThread {
     }
 
     public static Integer multiply(int a) {
+
+
         a = a * 10;
+        try {
+            Thread.sleep(100);
+        }
+        catch (InterruptedException _) {
+        }
         System.out.println(Thread.currentThread().getName() + " " + a);
         return a;
     }
+
 }
