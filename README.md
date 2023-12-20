@@ -2,7 +2,7 @@ https://youtu.be/zTBmcUdoEOA
 
 In this repository, you can find some examples of new JDK features:
 
-1. new instance of
+1. new instanceOf
 2. Local variable type inference
 3. Descriptive NullPointerException
 4. New switch statement

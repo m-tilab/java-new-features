@@ -13,11 +13,13 @@ public class InstanceOfExample {
 
     private void useInstanceOf(AbstractFile abstractFile) {
 
+        // Traditional
         if (abstractFile instanceof MusicFile) {
 
             ((MusicFile) abstractFile).playMusic();
         }
 
+        // New Way
         if (abstractFile instanceof MusicFile musicFile) {
 
             musicFile.playMusic();
