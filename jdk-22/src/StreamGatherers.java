@@ -13,6 +13,7 @@ public class StreamGatherers {
         findGroupsOfThreeWithGatherer(10, 3);
     }
 
+    // Traditional Example
     public static ArrayList<ArrayList<Integer>> findGroupsOfThree(long fixed_size, int grouping) {
 
         return Stream.iterate(0, i -> i + 1)
@@ -34,6 +35,7 @@ public class StreamGatherers {
                 ));
     }
 
+    // New Example using Gatherer interface
     public static List<List<Integer>> findGroupsOfThreeWithGatherer(long fixed_size, int grouping) {
 
         return Stream.iterate(0, i -> i + 1)
