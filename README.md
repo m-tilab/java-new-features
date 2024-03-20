@@ -20,5 +20,8 @@ In this repository, you can find some examples of new JDK features:
 16. Unnamed variables
 17. Virtual threads
 
+JDK 22:
+1. Stream Gatherers (JEP-461) for Enhanced Java Stream Operations
+
 
 Please, Don't forget to STAR the repository. Thank you!
